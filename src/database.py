@@ -8,13 +8,19 @@ db_file = "vyper.db"
 async def setup_db():
     async with aiosqlite.connect(db_file) as db:
         await db.execute("""
-            CREATE TABLE IF NOT EXISTS users 
-            (id INTEGER PRIMARY KEY, username TEXT, display_name TEXT)
+            CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY, 
+                username TEXT, 
+                display_name TEXT
+            )
         """)
 
         await db.execute("""
-            CREATE TABLE IF NOT EXISTS saved_messages 
-            (id INTEGER PRIMARY KEY AUTOINCREMENT, message TEXT, user_id INTEGER)
+            CREATE TABLE IF NOT EXISTS saved_messages (
+                id INTEGER PRIMARY KEY AUTOINCREMENT, 
+                message TEXT, 
+                user_id INTEGER
+            )
         """)
 
         await db.commit()
