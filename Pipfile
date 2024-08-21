@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[scripts]
+dev = "nodemon --exec 'python3' src/main.py"
+
+[packages]
+py-cord = "==2.0.0rc1"
+aiosqlite = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
