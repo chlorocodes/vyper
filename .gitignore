@@ -4,3 +4,4 @@
 .history
 .vscode
 __pycache__
+*.db
