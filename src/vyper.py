@@ -29,12 +29,12 @@ async def on_command(message):
     command = text.split(' ')[0]
 
     if command == '!save':
-        await save_message(message)
+        await save_message_for_user(message)
     elif command == '!load':
-        await load_all_messages_from_db(message)
+        await load_all_saved_messages_for_user(message)
 
 
-async def save_message(message):
+async def save_message_for_user(message):
     command, *words = message.content.split(' ')
     text_to_save = ' '.join(words)
     user = message.author
@@ -43,9 +43,9 @@ async def save_message(message):
     await message.reply('I have saved your message to the database!')
 
 
-async def load_all_messages_from_db(message):
+async def load_all_saved_messages_for_user(message):
     user = message.author
-    user_saved_messages = await database.load_all_messages_for_user(message.author)
+    user_saved_messages = await database.load_all_saved_messages_for_user(message.author)
     embed = discord.Embed(
         title="Saved Messages From " + user.display_name,
         description="Here are all the saved messages for " + user.display_name,

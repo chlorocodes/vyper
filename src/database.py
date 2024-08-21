@@ -42,7 +42,7 @@ async def save_message_to_db(message, user_id):
         await db.commit()
 
 
-async def load_all_messages_for_user(user):
+async def load_all_saved_messages_for_user(user):
     async with aiosqlite.connect(db_file) as db:
         async with db.execute('SELECT * FROM saved_messages WHERE user_id = ?',  (user.id,)) as cursor:
             messages = []
